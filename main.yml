@@ -20,6 +20,7 @@
       yum:
         name: icinga2
         state: latest
+<<<<<<< HEAD
         notify: start icinga2
 
     - name: CentOS - Enable Icinga 2 Agent
@@ -27,3 +28,5 @@
         name: Icinga2
         enable: yes
         state: start
+=======
+>>>>>>> fb170dc5bb2e56e688cfc2e0597965a1c3a07b51
