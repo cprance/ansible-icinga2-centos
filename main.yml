@@ -3,7 +3,7 @@
   hosts: all
   become: yes
   tasks:
-    - name: RedHat - Add Icinga 2 repository
+    - name: CentOS - Add Icinga 2 repository
       yum_repository:
          name: ICINGA-release
          description: Icinga packages for EL
@@ -11,13 +11,19 @@
          gpgkey: "https://packages.icinga.com/icinga.key"
          gpgcheck: yes
 
-    - name: RedHat - Ensure EPEL is enabled
+    - name: CentOS - Ensure EPEL is enabled
       yum:
         name: epel-release
         state: present
 
-    - name: RedHat - Ensure icinga2 is installed
+    - name: CentOS - Ensure icinga2 is installed
       yum:
         name: icinga2
         state: latest
         notify: start icinga2
+
+    - name: CentOS - Enable Icinga 2 Agent
+      service:
+        name: Icinga2
+        enable: yes
+        state: start
