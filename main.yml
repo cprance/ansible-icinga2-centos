@@ -23,6 +23,6 @@
 
     - name: CentOS - Enable Icinga 2 Agent
       service:
-        name: Icinga2
+        name: icinga2
         enable: yes
         state: start
