@@ -19,6 +19,6 @@
     - name: RedHat - Ensure icinga2 is installed
       yum:
         name: icinga2
-        state: present
+        state: latest
         notify: start icinga2
 
