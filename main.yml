@@ -20,5 +20,4 @@
       yum:
         name: icinga2
         state: latest
-        notify: start icinga2
 
