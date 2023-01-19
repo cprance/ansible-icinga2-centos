@@ -1,26 +1,24 @@
 ---
-- name: RedHat - Add Icinga 2 repository
+- name: Icinga 2 Install
+  hosts: all
   become: yes
-  yum_repository:
-    name: ICINGA-release
-    description: Icinga packages for EL
-    baseurl: "http://packages.icinga.com/epel/$releasever/release/"
-    gpgkey: "https://packages.icinga.com/icinga.key"
-    gpgcheck: yes
-  when: true
+  tasks:
+    - name: RedHat - Add Icinga 2 repository
+      yum_repository:
+         name: ICINGA-release
+         description: Icinga packages for EL
+         baseurl: "http://packages.icinga.com/epel/$releasever/release/"
+         gpgkey: "https://packages.icinga.com/icinga.key"
+         gpgcheck: yes
 
-- name: RedHat - Ensure EPEL is enabled
-  become: yes
-  yum:
-    name: epel-release
-    state: present
-  when: true
+    - name: RedHat - Ensure EPEL is enabled
+      yum:
+        name: epel-release
+        state: present
 
-- name: RedHat - Ensure icinga2 is installed
-  become: yes
-  yum:
-    name: icinga2
-    state: present
-  notify: start icinga2
-  when: true
+    - name: RedHat - Ensure icinga2 is installed
+      yum:
+        name: icinga2
+        state: present
+        notify: start icinga2
 
