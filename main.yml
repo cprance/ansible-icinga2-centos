@@ -20,4 +20,3 @@
       yum:
         name: icinga2
         state: latest
-
