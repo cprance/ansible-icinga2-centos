@@ -20,6 +20,14 @@
       yum:
         name: icinga2
         state: latest
+    - name: Install Icinga Dependencies
+      yum:
+        name: perl
+        state: latest
+    - name: Install Nagios Plugins
+      yum:
+        name: nagios-plugins-all
+        state: latest
 
     - name: CentOS - Enable Icinga 2 Agent
       service:
