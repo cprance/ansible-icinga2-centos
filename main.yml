@@ -15,19 +15,30 @@
       yum:
         name: epel-release
         state: present
+    - name: CentOS Enable Powertools
+      ansible.builtin.shell:
+        cmd: "dnf config-manager --set-enabled powertools"
 
     - name: CentOS - Ensure icinga2 is installed
       yum:
         name: icinga2
         state: latest
-    - name: Install Icinga Dependencies
+    - name: Install Icinga Dependencies - Perl
       yum:
         name: perl
         state: latest
+    - name: Install Icinga Dependencies - Python
+      yum:
+        name: python3
+        state: present
+    - name: create symbolic link for Python3 -> Python2.x
+      ansible.builtin.shell:
+          cmd: "ln /usr/bin/python3 /usr/bin/python"
     - name: Install Nagios Plugins
       yum:
         name: nagios-plugins-all
         state: latest
+
 
 
     - name: CentOS - Enable Icinga 2 Agent
